@@ -70,3 +70,7 @@
 - [x] Treat malformed or placeholder `DATABASE_URL` values as demo mode so route collection cannot crash during production builds.
 - [x] Move `typedRoutes` to the supported Next.js 15 configuration key and remove the deprecation warning.
 - [x] Stop the development hot-reload loop caused by compiler metadata updates so client routes hydrate and exit skeleton states reliably.
+- [x] Configure Next.js standalone output and package the production runtime under `dist/` for the managed container contract.
+- [x] Ensure `dist/public/` always contains at least one deployable public artifact so static upload cannot fail on an empty wildcard.
+- [x] Add regression checks for the deployment artifact layout and verify the packaged server starts successfully.
+- [x] Save a corrected deployable checkpoint after tests, type checks, production build, and runtime smoke test pass.

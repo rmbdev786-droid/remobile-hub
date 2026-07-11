@@ -1,0 +1,7 @@
+import { clerkMiddleware,createRouteMatcher } from "@clerk/nextjs/server";
+import type { NextFetchEvent,NextRequest } from "next/server";
+import { NextResponse } from "next/server";
+const isPublicRoute=createRouteMatcher(["/api/cron(.*)","/api/webhooks/bol(.*)","/api/trpc(.*)"]);
+const configuredMiddleware=clerkMiddleware(async(auth,request)=>{if(!isPublicRoute(request))await auth.protect()});
+export default function middleware(request:NextRequest,event:NextFetchEvent){if(!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY)return NextResponse.next();return configuredMiddleware(request,event)}
+export const config={matcher:["/((?!_next/static|_next/image|favicon.ico).*)"]};

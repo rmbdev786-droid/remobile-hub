@@ -1,15 +1,12 @@
 import { defineConfig } from "drizzle-kit";
 
-const connectionString = process.env.DATABASE_URL;
-if (!connectionString) {
-  throw new Error("DATABASE_URL is required to run drizzle commands");
-}
-
 export default defineConfig({
-  schema: "./drizzle/schema.ts",
-  out: "./drizzle",
-  dialect: "mysql",
+  dialect: "postgresql",
+  schema: "./lib/db/schema.ts",
+  out: "./drizzle/migrations",
   dbCredentials: {
-    url: connectionString,
+    url: process.env.DATABASE_URL ?? "postgresql://postgres:postgres@localhost:5432/remobile_hub",
   },
+  strict: true,
+  verbose: true,
 });

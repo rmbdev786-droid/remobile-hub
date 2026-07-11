@@ -1,0 +1,1 @@
+export default function Loading(){return <div className="flex min-h-screen items-center justify-center bg-[#0C0C0E] text-[13px] text-[#A0A0A8]"><span className="mr-3 h-2 w-2 animate-pulse rounded-full bg-[#FF6B00]"/>Preparing operations workspace…</div>}

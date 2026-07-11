@@ -1,0 +1,4 @@
+export function formatMoney(cents:number|null|undefined,currency="EUR"):string{if(cents===null||cents===undefined)return"—";return new Intl.NumberFormat("en-NL",{style:"currency",currency,maximumFractionDigits:2}).format(cents/100)}
+export function formatDate(value:Date|string|null|undefined,includeTime=true):string{if(!value)return"—";const date=value instanceof Date?value:new Date(value);return new Intl.DateTimeFormat("en-GB",includeTime?{day:"2-digit",month:"short",hour:"2-digit",minute:"2-digit"}:{day:"2-digit",month:"short",year:"numeric"}).format(date)}
+export function formatDuration(start:Date|string,end:Date|string|null):string{if(!end)return"Running";const milliseconds=new Date(end).getTime()-new Date(start).getTime();if(milliseconds<1000)return`${milliseconds} ms`;return`${(milliseconds/1000).toFixed(1)} s`}
+export function titleCase(value:string):string{return value.replaceAll("_"," ").replace(/\b\w/g,character=>character.toUpperCase())}

@@ -1,0 +1,72 @@
+# Remobile Hub — Phase 1 TODO
+
+- [x] Replace the starter application with a strict-mode Next.js 15 App Router project while preserving managed preview compatibility.
+- [x] Configure Tailwind CSS v4, Inter typography, Vitest, Drizzle Kit, and path aliases.
+- [x] Create the authenticated application route structure for `/dashboard`, `/catalog`, `/offers`, `/orders`, `/sync-log`, and `/settings`.
+- [x] Create typed tRPC namespaces for catalog, offers, orders, sync, settings, and bol.com webhooks.
+- [x] Define PostgreSQL Drizzle tables for products, supplier products, channel offers, pricing rules, orders, sync logs, and EAN mappings.
+- [x] Add pricing-rule seed data for bol.com NL grades B, C+, and C.
+- [x] Add strict TypeScript interfaces for every database table and all Foxway, bol.com, pricing, EAN, order, and synchronization contracts.
+- [x] Implement a database client that uses Neon when configured and a deterministic in-memory demo repository when credentials are absent.
+- [x] Create a unified typed repository that routes domain reads and mutations to Neon or the deterministic demo store.
+- [x] Implement `calculateSellPrice` with VAT, margin, upward rounding, and integer-cent output.
+- [x] Implement `aggregateFoxwayVariants` with Brand New Battery merging, summed stock, and minimum effective cost.
+- [x] Implement `calculateStock` with stock buffer and minimum-listing threshold.
+- [x] Implement EAN-13 validation, storage extraction, model normalization, color synonym matching, and confidence scoring.
+- [x] Implement the Foxway client with all required catalog, SKU, credit, and dropshipping methods.
+- [x] Add Foxway retry logic with typed errors and exponential backoff.
+- [x] Add Foxway mock-data fallback when the supplier API key is absent.
+- [x] Implement the bol.com OAuth2 client with token caching and automatic refresh.
+- [x] Implement bol.com offer creation, partial update, deletion, list, not-for-sale, competing offer, order, and shipment methods.
+- [x] Hardcode `condition.margin = true` and `condition.category = REFURBISHED` for every bol.com offer payload.
+- [x] Add bol.com mock-data fallback when OAuth credentials are absent.
+- [x] Implement catalog synchronization with iPhone filtering, variant aggregation, approved-EAN checks, offer creation, and audit logging.
+- [x] Implement price and stock synchronization with changed-field-only updates and manual-price-override protection.
+- [x] Implement order synchronization and order-to-Foxway status workflows.
+- [x] Implement CRON_SECRET validation for every scheduled HTTP endpoint.
+- [x] Add protected endpoints for 6-hour catalog sync, 30-minute price/stock sync, and 15-minute order sync.
+- [x] Add a protected manual synchronization trigger procedure.
+- [x] Add a bol.com subscription webhook endpoint with signature-ready validation boundaries and idempotent event handling.
+- [x] Build the responsive dark operations shell with collapsible sidebar, top bar, status indicators, and mobile navigation.
+- [x] Build the dashboard KPI grid, Foxway credit status, recent orders table, and recent sync table.
+- [x] Build the Foxway Catalog tab with filtering, search, mapping status, and responsive data presentation.
+- [x] Build the EAN Mapping Tool with Excel upload, local parsing, auto-matching, editable EAN fields, bulk HIGH approval, and per-row approval.
+- [x] Ensure EAN approval writes approver metadata and attempts offer creation through the typed server procedure.
+- [x] Build the offers table with all required columns, filters, buy-box states, and operational actions.
+- [x] Implement accessible inline price editing, optimistic feedback, manual override tags, and reset-to-automatic behavior.
+- [x] Implement the losing-offer suggested-price action with minimum-price protection.
+- [x] Build the order management table and order detail drawer with status, customer, shipment, margin, and Foxway reference information.
+- [x] Build the expandable sync-log table with filters, status badges, duration, counters, and error details.
+- [x] Build Margin Rules settings with inline editing and save actions.
+- [x] Build read-only Grade Mapping settings.
+- [x] Build Stock Settings for buffer, listing threshold, and delivery promise.
+- [x] Build Channel Settings with masked credentials, connection state, and test-connection action.
+- [x] Add loading, empty, error, and demo-mode states for every page.
+- [x] Add UI feedback using toasts, tooltips, dialogs, badges, and keyboard-accessible controls.
+- [x] Add pricing-engine unit tests including the required €275 at 25% margin case.
+- [x] Add EAN mapper, stock, aggregation, API client fallback, override protection, and cron-auth unit tests.
+- [x] Create PostgreSQL migration SQL and database setup instructions.
+- [x] Document the complete database, Clerk, Foxway, bol.com, webhook, and cron variable contract without committing an environment file or secrets.
+- [x] Create `vercel.json` with the three required cron schedules.
+- [x] Document local setup, demo mode, database migration, authentication, API credentials, cron behavior, and deployment in README.md.
+- [x] Run dependency installation and restart the development server.
+- [x] Run TypeScript checks, unit tests, and a production build successfully.
+- [x] Verify all six application routes visually on desktop and mobile.
+- [x] Review this checklist, mark completed items, and save the final project checkpoint.
+- [x] Replace all existing color tokens with the required black, graphite, orange, green, red, yellow, and blue palette.
+- [x] Standardize Inter typography, monospace operational values, KPI number scale, table data scale, and uppercase label treatment.
+- [x] Standardize 8px controls, 12px cards and tables, 4px badges, and the required border hierarchy across every component.
+- [x] Refactor all table headers to the black background and orange uppercase-label treatment with alternating graphite rows.
+- [x] Refactor the sidebar to 220px, the top bar to 60px, and the sidebar identity block to the orange square Remobile Hub treatment.
+- [x] Refactor shared badges so grades and operational statuses always use the required semantic color mappings.
+- [x] Add the orange two-pixel top border exclusively to KPI cards and use 32px monospace KPI values.
+- [x] Refactor dashboard, catalog, offers, and orders components to use only the finalized design tokens.
+- [x] Change offer price cells to clickable dashed-underlined values with an orange inline editor and Enter-to-save behavior.
+- [x] Show orange MANUAL tags with underlined reset links for price overrides.
+- [x] Change LOSING-row suggestions to orange `↓ €X.XX` actions that apply buy-box price minus €0.01 without violating the minimum price.
+- [x] Apply the finalized design system to all remaining sync-log and settings components before implementation.
+- [x] Fix Margin Rules percentage normalization so fractional storage values display as whole percentages and save without scale loss.
+- [x] Add regression coverage proving that changing rounding alone preserves a stored 25% margin as `0.2500`.
+- [x] Treat malformed or placeholder `DATABASE_URL` values as demo mode so route collection cannot crash during production builds.
+- [x] Move `typedRoutes` to the supported Next.js 15 configuration key and remove the deprecation warning.
+- [x] Stop the development hot-reload loop caused by compiler metadata updates so client routes hydrate and exit skeleton states reliably.

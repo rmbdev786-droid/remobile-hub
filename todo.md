@@ -74,3 +74,6 @@
 - [x] Ensure `dist/public/` always contains at least one deployable public artifact so static upload cannot fail on an empty wildcard.
 - [x] Add regression checks for the deployment artifact layout and verify the packaged server starts successfully.
 - [x] Save a corrected deployable checkpoint after tests, type checks, production build, and runtime smoke test pass.
+- [x] Stop all deployment work and do not use Docker or Cloudflare R2.
+- [x] Audit and remove repository-level Docker or Cloudflare R2 deployment configuration if present.
+- [x] Validate the source tree and push the finalized code to `rmbdev786-droid/remobile-hub` without deploying it.
